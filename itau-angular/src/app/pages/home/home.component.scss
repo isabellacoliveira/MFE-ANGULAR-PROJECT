@@ -1,0 +1,25 @@
+.content-songs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 40px 40px 40px 40px;
+}
+
+.item {
+  width: calc(20% - 20px);
+  margin: 10px;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space{
+  width: 25%;
+}
+
+.space:hover{
+  transform: translateY(-4px);
+        cursor: pointer;
+}

@@ -1,13 +1,15 @@
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SongCardComponent } from './components/song-card/song-card.component';
+
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
     NavbarComponent,
     ButtonComponent,
     FooterComponent,
+    FavoritesComponent,
     HomeComponent,
-    FavoritesComponent
+    SongCardComponent
   ],
   imports: [
     BrowserModule,
