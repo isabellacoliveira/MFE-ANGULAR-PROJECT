@@ -1,0 +1,40 @@
+{
+    "musicas": [
+        {
+            "id": 1,
+            "title": "Quero Você",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Antes que o dia acabe",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Vem dançar",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Cabelos de algodao",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Bem mais",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        },
+        {
+            "id": 6,
+            "title": "de frente pro mar",
+            "artist": "Fly",
+            "image": "https://static1.purebreak.com.br/articles/5/83/95/@/43676-banda-fly-surpreende-o-publico-com-o-diapo-1.jpg"
+        }
+    ]
+}

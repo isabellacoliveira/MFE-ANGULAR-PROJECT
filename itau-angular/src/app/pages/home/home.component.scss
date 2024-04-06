@@ -2,8 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 40px 40px 40px 40px;
+  margin: 40px; /* Remova as margens específicas de cada lado */
 }
+
 
 .item {
   width: calc(20% - 20px);
@@ -13,6 +14,7 @@
 .row{
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .space{

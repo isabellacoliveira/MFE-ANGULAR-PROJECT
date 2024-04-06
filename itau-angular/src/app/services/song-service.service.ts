@@ -1,43 +1,33 @@
 import { Injectable } from '@angular/core';
-import { IGetMusicQueryParams } from '../interfaces/Music/IGetMusicQueryParams';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IMusic } from '../interfaces/Music';
+import { IApiResponse } from '../types/IApiResponse';
+import { IMusicResponse } from '../interfaces/Music/IMusicResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongServiceService {
 
-  private readonly baseURL = '/Songs';
+  private readonly BASE_URL = 'http://localhost:3003/musicas'; // Altere para sua URL base
+
   constructor(private httpClient: HttpClient) {}
 
-  getEquipamentos(queryParams: IGetMusicQueryParams) {
-    return this.httpClient.get<IMusic>(
-      this.baseURL,
-      // {
-      //   params: new HttpParams({ fromObject: queryParams })
-      // }
-    );
-  }
+  getSongs() {
+    return this.httpClient.get<IMusic[]>(this.BASE_URL);
+}
+
   getHistoricoChamados(numSerie?: string) {
-    return this.httpClient.get<IMusic[]>(
-      `${this.baseURL}/HistoricoOS/${numSerie}`
-    );
+    return this.httpClient.get<IMusic[]>(`${this.BASE_URL}/HistoricoOS/${numSerie}`);
   }
-  getDownloadPDFFechamento(queryParams: IGetMusicQueryParams) {
-    return this.httpClient.get<string>(
-      this.baseURL + '/exportarPDFEquipamento',
-      // {
-      //   params: new HttpParams({ fromObject: queryParams })
-      // }
-    );
+
+  getDownloadPDFFechamento(queryParams: any) {
+    // Você precisa verificar como enviar os queryParams para sua API
+    return this.httpClient.get<string>(`${this.BASE_URL}/exportarPDFEquipamento`);
   }
-  getDownloadCSVFechamento(queryParams: IGetMusicQueryParams) {
-    return this.httpClient.get<string>(
-      this.baseURL + '/exportarCSVEquipamento',
-      // {
-      //   params: new HttpParams({ fromObject: queryParams })
-      // }
-    );
+
+  getDownloadCSVFechamento(queryParams: any) {
+    // Você precisa verificar como enviar os queryParams para sua API
+    return this.httpClient.get<string>(`${this.BASE_URL}/exportarCSVEquipamento`);
   }
 }

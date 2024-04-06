@@ -1,3 +1,4 @@
+import { IMusic } from './../../interfaces/Music/IMusic';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -6,8 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./song-card.component.scss']
 })
 export class SongCardComponent {
-  @Input() title!: string;
-  @Input() artist!: string;
-  @Input() image!: string;
+  @Input () song!: IMusic;
   constructor() {}
 }
