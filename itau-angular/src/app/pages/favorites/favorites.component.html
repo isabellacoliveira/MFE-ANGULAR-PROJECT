@@ -3,3 +3,15 @@
   <p>Press this <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> to download a PDF with your favorite songs.</p>
   <hr>
 </div>
+
+<div class="content-songs" *ngIf="songs.length > 0, else noSongs">
+  <div class="row" *ngFor="let song of songs">
+      <app-song-card [song]="song"></app-song-card>
+  </div>
+</div>
+
+<ng-template #noSongs>
+  <div class="ff-inter sem-pensamentos">
+    <p>There's no favorite songs :(</p>
+  </div>
+</ng-template>

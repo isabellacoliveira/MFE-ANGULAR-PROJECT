@@ -1,0 +1,14 @@
+.content-songs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: space-around;
+  justify-content: center;
+  display: flex;
+}
+
+.row{
+  width: 25%;
+  margin: 10px 10px 10px 10px;
+  justify-content: center;
+  display: flex;
+}

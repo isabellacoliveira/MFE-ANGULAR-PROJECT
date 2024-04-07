@@ -1,29 +1,29 @@
-<div class="jumbotron">
-  <h1 class="display-4">Hello, Isabella!</h1>
-  <p class="lead">Here you can see your favorite songs of your favorite artists!</p>
-  <hr class="my-4">
-  <p>You can register then clicking here :) </p>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  (click)="openModal()">
-    Register new Song
-  </button>
-</div>
-
-<div class="content-songs" *ngIf="songs.length > 0, else noSongs">
-  <div class="row" *ngFor="let song of songs">
-      <app-song-card [song]="song" (songDeleted)="onSongDeleted(song)"></app-song-card>
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, Isabella!</h1>
+    <p class="lead">Here you can see your favorite songs of your favorite artists!</p>
+    <hr class="my-4">
+    <p>You can register then clicking here :) </p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  (click)="openModal()">
+      Register new Song
+    </button>
   </div>
-</div>
 
-<ng-template #noSongs>
-  <div class="ff-inter sem-pensamentos">
-    <p>Ainda não há musicas cadastradas</p>
-    <button>cadastro</button>
+  <div class="content-songs" *ngIf="songs.length > 0, else noSongs">
+    <div class="row" *ngFor="let song of songs">
+        <app-song-card [song]="song" (songDeleted)="onSongDeleted(song)"></app-song-card>
+    </div>
   </div>
-</ng-template>
 
-<app-modal #myModal (closeModal)="closeModal()">
-  <app-form></app-form>
-</app-modal>
+  <ng-template #noSongs>
+    <div class="ff-inter sem-pensamentos">
+      <p>You don't have any songs registered yet</p>
+      <app-button [title]="'Register'"></app-button>
+    </div>
+  </ng-template>
+
+  <app-modal #myModal (closeModal)="closeModal()">
+    <app-form></app-form>
+  </app-modal>
 
 
 

@@ -25,7 +25,8 @@ describe('SongCardComponent', () => {
       id: 1,
       title: 'Song Title',
       artist: 'Artist Name',
-      image: 'path/to/image.jpg'
+      image: 'path/to/image.jpg',
+      isSaved: false
     };
     component.song = song;
 

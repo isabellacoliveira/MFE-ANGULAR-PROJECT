@@ -2,6 +2,7 @@ import { SongServiceService } from './../../services/song-service.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { IMusic } from 'src/app/interfaces/Music';
 
@@ -22,6 +23,7 @@ export class FormComponent {
     private fb: FormBuilder,
     private songService: SongServiceService,
     private router: Router,
+     private spinner: NgxSpinnerService
   ) {}
 
   setForm(song: IMusic) {
@@ -29,6 +31,7 @@ export class FormComponent {
       title: song.title,
       artist: song.artist,
       image: song.image,
+      isSaved: song.isSaved
     });
     this.editSong = song;
     this.isEditMode = true;
@@ -39,10 +42,12 @@ export class FormComponent {
       title: ['', [Validators.required]],
       artist: ['', [Validators.required]],
       image: ['', [Validators.required]],
+      isSaved: false
     });
   }
 
   createSong() {
+    this.spinner.show();
     this.subscriptions$.add(
       this.songService.postSongs(this.songForm.value).subscribe({
         next: () => {
@@ -50,8 +55,12 @@ export class FormComponent {
           this.formModified.emit(); 
           this.router.navigate(['/home']); 
         },
+        complete: () => {
+          this.spinner.hide(); 
+        },
         error: (error) => {
           console.error('Error:', error);
+          this.spinner.hide(); 
           
         },
       })
@@ -59,6 +68,7 @@ export class FormComponent {
   }
 
   editSongs() {
+    this.spinner.show(); 
     this.subscriptions$.add(
       this.songService
         .putSong({
@@ -70,8 +80,7 @@ export class FormComponent {
         })
         .subscribe({
           complete: () => {
-            // this.updateSong.emit();
-            // this.modal.close();
+            this.spinner.hide();
           },
         })
     );

@@ -3,6 +3,7 @@ import { SongServiceService } from 'src/app/services/song-service.service';
 import { IMusic } from './../../interfaces/Music/IMusic';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,15 @@ export class HomeComponent implements OnInit {
   @ViewChild(ModalComponent)
   modal: ModalComponent;
 
-  constructor(private songService: SongServiceService) {}
+  constructor(private songService: SongServiceService, private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
+     this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
+
     this.getMusics();
   }
 
@@ -46,15 +53,20 @@ export class HomeComponent implements OnInit {
 
   onSongDeleted(song: IMusic) {
     this.modal.open();
-    if (confirm(`Are you sure you want to delete ${song.title}?`)) {
+    
       this.songService.deleteSong({ id: song.id }).subscribe(
         () => {
+          this.spinner.show();
           this.songs = this.songs.filter((item) => item.id !== song.id);
+
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 3000);
         },
         (error) => {
           console.error('Erro ao excluir música:', error);
         }
       );
-    }
+    
   }
 }
