@@ -3,16 +3,14 @@
   <p class="lead">Here you can see your favorite songs of your favorite artists!</p>
   <hr class="my-4">
   <p>You can register then clicking here :) </p>
-  <button type="button" class="btn btn-primary btn-lg" (click)="openModal()">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  (click)="openModal()">
     Register new Song
   </button>
 </div>
 
-<div class="content-songs">
-  <div class="row" *ngIf="songs.length > 0, else noSongs">
-    <div *ngFor="let song of songs">
-      <app-song-card [song]="song"></app-song-card>
-    </div>
+<div class="content-songs" *ngIf="songs.length > 0, else noSongs">
+  <div class="row" *ngFor="let song of songs">
+      <app-song-card [song]="song" (songDeleted)="onSongDeleted(song)"></app-song-card>
   </div>
 </div>
 
@@ -23,7 +21,13 @@
   </div>
 </ng-template>
 
+<app-modal #myModal (closeModal)="closeModal()">
+  <app-form></app-form>
+</app-modal>
 
-<app-modal #myModal (closeModal)="handleCloseModal()"></app-modal>
+
+
+
+
 
 

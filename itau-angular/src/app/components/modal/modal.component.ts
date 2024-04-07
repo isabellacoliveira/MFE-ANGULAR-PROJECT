@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { IMusic } from 'src/app/interfaces/Music';
+import { FormComponent } from './../form/form.component';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -6,16 +8,15 @@ import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angula
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-  isOpen: boolean;
-  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  isOpen: boolean = false;
+  @ViewChild(FormComponent)
+  form: FormComponent;
 
   open() {
     this.isOpen = true;
-    console.log(this.isOpen)
   }
-
+  
   close() {
     this.isOpen = false;
-    this.closeModal.emit();
   }
 }

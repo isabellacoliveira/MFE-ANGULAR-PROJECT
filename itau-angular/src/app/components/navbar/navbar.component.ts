@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  active: boolean = true;
 
+  isActive(){
+    this.active = !this.active;
+  }
 }

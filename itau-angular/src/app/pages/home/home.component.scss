@@ -1,27 +1,22 @@
 .content-songs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 40px; /* Remova as margens específicas de cada lado */
-}
-
-
-.item {
-  width: calc(20% - 20px);
-  margin: 10px;
+  flex-direction: space-around;
+  justify-content: center;
+  display: flex;
 }
 
 .row{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.space{
   width: 25%;
+  margin: 10px 10px 10px 10px;
+  justify-content: center;
+  display: flex;
 }
 
-.space:hover{
+.card{
+}
+
+.row:hover{
   transform: translateY(-4px);
-        cursor: pointer;
+  cursor: pointer;
 }
