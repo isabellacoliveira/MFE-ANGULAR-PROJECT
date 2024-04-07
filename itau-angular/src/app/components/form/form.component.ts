@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IMusic } from 'src/app/interfaces/Music';
 
@@ -23,7 +24,8 @@ export class FormComponent {
     private fb: FormBuilder,
     private songService: SongServiceService,
     private router: Router,
-     private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) {}
 
   setForm(song: IMusic) {
@@ -31,7 +33,7 @@ export class FormComponent {
       title: song.title,
       artist: song.artist,
       image: song.image,
-      isSaved: song.isSaved
+      isSaved: song.isSaved,
     });
     this.editSong = song;
     this.isEditMode = true;
@@ -42,7 +44,7 @@ export class FormComponent {
       title: ['', [Validators.required]],
       artist: ['', [Validators.required]],
       image: ['', [Validators.required]],
-      isSaved: false
+      isSaved: false,
     });
   }
 
@@ -51,27 +53,27 @@ export class FormComponent {
     this.subscriptions$.add(
       this.songService.postSongs(this.songForm.value).subscribe({
         next: () => {
-          this.songForm.reset(); 
-          this.formModified.emit(); 
-          this.router.navigate(['/home']); 
+          // this.toastr.success('Successfully', 'The Song was created successfully!');
+          this.songForm.reset();
+          this.formModified.emit();
+          this.router.navigate(['/home']);
         },
         complete: () => {
-          this.spinner.hide(); 
+          this.spinner.hide();
         },
         error: (error) => {
-          console.error('Error:', error);
-          this.spinner.hide(); 
-          
+          this.toastr.error('Error', 'An error has ocurred' + error);
+          this.spinner.hide();
         },
       })
-    );
-  }
-
-  editSongs() {
-    this.spinner.show(); 
+      );
+    }
+    
+    editSongs() {
+      this.spinner.show();
     this.subscriptions$.add(
       this.songService
-        .putSong({
+      .putSong({
           ...this.editSong,
           id: 1,
           title: this.songForm.get('title')?.value,
@@ -80,6 +82,11 @@ export class FormComponent {
         })
         .subscribe({
           complete: () => {
+            this.toastr.success('Successfully', 'The Song was created successfully!');
+            this.spinner.hide();
+          },
+          error: (error) => {
+            this.toastr.error('Error', 'An error has ocurred' + error);
             this.spinner.hide();
           },
         })

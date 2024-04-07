@@ -14,6 +14,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot()
+    NgxSpinnerModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
