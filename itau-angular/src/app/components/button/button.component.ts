@@ -6,9 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-  // verificar 
   @Input()
-  title!: string;
+  title: string;
 
   constructor() {}
 }

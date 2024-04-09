@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
+import { DownloadButtonComponent } from './components/download-button/download-button.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     SongCardComponent,
     FormComponent,
     ModalComponent,
+    DownloadButtonComponent,
   ],
   imports: [
     BrowserModule,

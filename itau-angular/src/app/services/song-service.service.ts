@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IMusic } from '../interfaces/Music';
-import { IApiResponse } from '../types/IApiResponse';
-import { IMusicResponse } from '../interfaces/Music/IMusicResponse';
 import { IPostSongBody } from '../interfaces/Music/IPostSongBody';
 import { IPostSongResponseData } from '../interfaces/Music/IPostSongResponseData';
 import { IPutSongBody } from '../interfaces/Music/IPutSongBody';
@@ -45,12 +43,6 @@ export class SongServiceService {
   deleteSong({ id }: IDeleteSongPathParams) {
     return this.httpClient.delete<IApiResponse<IDeleteSongResponseData>>(
       `${this.baseUrl}/${id}`
-    );
-  }
-
-  getDownloadPDFFavoritos(queryParams: any) {
-    return this.httpClient.get<string>(
-      `${this.baseUrl}/exportarPDFavoritos`
     );
   }
 }
