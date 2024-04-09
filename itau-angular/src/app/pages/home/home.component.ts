@@ -46,12 +46,13 @@ export class HomeComponent implements OnInit {
     this.modal.close();
     console.log('fecho')
     this.getMusics();
+    this.editSongData = {} as IMusic;
   }
 
   editSong(song: IMusic) {
-    this.editSongData = song; 
+    this.editSongData = song;
     this.form.setForm(this.editSongData)
-    this.modal.open(); 
+    this.modal.open();
   }
 
   getMusics() {

@@ -14,43 +14,19 @@ const routes: Routes = [
     {
       path: 'home',
       component: HomeComponent,
-      // canActivate: [LoginGuardService]
     },
     {
       path: 'form',
       component: FormComponent,
-      // canActivate: [LoginGuardService]
     },
     {
       path: 'favorites',
       component: FavoritesComponent,
-      // canActivate: [LoginGuardService]
     },
-  //   {
-  //   path: 'login',
-  //   component: LoginContainerComponent,
-  //   canActivate: [LoginGuardService],
-  //   children: [
-  //     {
-  //       path: '',
-  //       component: LoginComponent,
-  //       canActivate: [LoginGuardService]
-  //     },
-  //     {
-  //       path: 'redefinir-senha',
-  //       component: RedefinirSenhaComponent,
-  //       canActivate: [LoginGuardService]
-  //     },
-  //     {
-  //       path: 'redefinir-senha/concluir',
-  //       component: ConcluirRedefinirSenhaComponent,
-  //       canActivate: [LoginGuardService]
-  //     }
-  //   ],
-  //   data: {
-  //     autorizacaoNecessaria: 'rotaLogin'
-  //   }
-  // },
+    {
+      path: '*',
+      component: FavoritesComponent,
+    },
 ];
 
 @NgModule({

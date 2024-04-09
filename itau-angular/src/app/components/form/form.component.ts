@@ -16,7 +16,7 @@ export class FormComponent {
   subscriptions$ = new Subscription();
   songForm!: FormGroup;
   song: IMusic;
-  editSong: IMusic;
+  @Input() editSong: IMusic;
   isEditMode: boolean = false;
   @Output() formModified: EventEmitter<void> = new EventEmitter<void>();
 
@@ -72,7 +72,7 @@ export class FormComponent {
       })
       );
     }
-    
+
     editSongs() {
       this.spinner.show();
     this.subscriptions$.add(

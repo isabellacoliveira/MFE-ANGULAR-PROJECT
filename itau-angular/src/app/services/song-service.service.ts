@@ -7,6 +7,7 @@ import { IPutSongBody } from '../interfaces/Music/IPutSongBody';
 import { IPutSongResponseData } from '../interfaces/Music/IPutSongResponseData';
 import { IDeleteSongPathParams } from '../interfaces/Music/IDeleteSongPathParams';
 import { IDeleteSongResponseData } from '../interfaces/Music/IDeleteSongResponseData';
+import { IApiResponse } from '../types/IApiResponse';
 @Injectable({
   providedIn: 'root',
 })
