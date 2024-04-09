@@ -1,3 +1,4 @@
+import { ButtonComponent } from './../../components/button/button.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotfoundComponent } from './notfound.component';
@@ -8,7 +9,7 @@ describe('NotfoundComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotfoundComponent]
+      declarations: [NotfoundComponent, ButtonComponent]
     });
     fixture = TestBed.createComponent(NotfoundComponent);
     component = fixture.componentInstance;
