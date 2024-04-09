@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
   closeModal() {
     this.modal.close();
-    console.log('fecho')
     this.getMusics();
     this.editSongData = {} as IMusic;
   }

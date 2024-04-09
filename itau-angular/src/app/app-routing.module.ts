@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 const routes: Routes = [
     {
@@ -24,8 +25,8 @@ const routes: Routes = [
       component: FavoritesComponent,
     },
     {
-      path: '*',
-      component: FavoritesComponent,
+      path: '**',
+      component: NotfoundComponent,
     },
 ];
 

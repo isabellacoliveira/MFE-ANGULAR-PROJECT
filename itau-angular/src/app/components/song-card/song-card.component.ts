@@ -67,8 +67,5 @@ export class SongCardComponent {
 
   editSong() {
     this.songToEdit.emit(this.song);
-    console.log(this.song)
   }
-  
-  
 }

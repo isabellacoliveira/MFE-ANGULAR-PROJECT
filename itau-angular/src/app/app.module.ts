@@ -16,6 +16,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
 import { DownloadButtonComponent } from './components/download-button/download-button.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DownloadButtonComponent } from './components/download-button/download-b
     FormComponent,
     ModalComponent,
     DownloadButtonComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

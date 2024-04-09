@@ -1,0 +1,15 @@
+.not_found{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+
+  .img{
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.not_found_info{
+  padding-top: 200px;
+}
