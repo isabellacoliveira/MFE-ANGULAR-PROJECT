@@ -2,7 +2,7 @@
 
 Welcome to My Music Collection! This web application allows users to manage and organize their favorite music collection effortlessly. Whether you want to add new songs, edit existing ones, or remove them, this application has got you covered. Additionally, it offers a unique feature to track changes in the database and extract modified data to a file for further analysis.
 
-![Angular Logo](angular_logo.png) ![Spring Boot Logo](spring_boot_logo.png)
+![Angular Logo](./src/assets/angular.webp) ![Spring Boot Logo](./src/assets/spring.png)
 
 ## Table of Contents
 - [Features](#features)
@@ -23,7 +23,7 @@ Welcome to My Music Collection! This web application allows users to manage and 
 - Java 11+
 - AWS (Amazon Web Services)
 - Relational or Non-relational Database (e.g., PostgreSQL, MongoDB)
-- ![Itaú Logo](itaubank_logo.png)
+- ![Itaú Logo](./src/assets/itau.png)
 
 ## Getting Started
 To get started with the application, follow these steps:
@@ -45,10 +45,10 @@ Once the application is up and running, you can access it through your web brows
 ## Diagrams
 
 ### Solution Design
-![Solution Design](solution_design.png)
+![Solution Design](./src/assets/aws.png)
 
 ### Sequence Diagram 
-![Sequence Diagram](sequence_diagram.png)
+![Sequence Diagram](./src/assets/DiagramaDeSequencia.png)
 
 For more details, refer to the respective diagram images provided in the repository.
 
