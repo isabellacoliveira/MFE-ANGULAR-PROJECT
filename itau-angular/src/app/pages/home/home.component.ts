@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { FormComponent } from 'src/app/components/form/form.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,9 @@ export class HomeComponent implements OnInit {
   isOpen: boolean = false;
   @ViewChild(ModalComponent)
   modal: ModalComponent;
+  editSongData: IMusic;
+  @ViewChild(FormComponent)
+  form: FormComponent;
 
   constructor(
     private songService: SongServiceService,
@@ -40,6 +44,14 @@ export class HomeComponent implements OnInit {
 
   closeModal() {
     this.modal.close();
+    console.log('fecho')
+    this.getMusics();
+  }
+
+  editSong(song: IMusic) {
+    this.editSongData = song; 
+    this.form.setForm(this.editSongData)
+    this.modal.open(); 
   }
 
   getMusics() {

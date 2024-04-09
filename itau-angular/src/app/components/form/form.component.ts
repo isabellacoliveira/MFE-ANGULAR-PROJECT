@@ -41,11 +41,15 @@ export class FormComponent {
 
   ngOnInit(): void {
     this.songForm = this.fb.group({
-      title: ['', [Validators.required]],
-      artist: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      artist: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       image: ['', [Validators.required]],
       isSaved: false,
     });
+
+    if (this.editSong) {
+      this.setForm(this.editSong);
+    }
   }
 
   createSong() {
@@ -53,10 +57,10 @@ export class FormComponent {
     this.subscriptions$.add(
       this.songService.postSongs(this.songForm.value).subscribe({
         next: () => {
-          // this.toastr.success('Successfully', 'The Song was created successfully!');
+          this.toastr.success('Successfully', 'The Song was created successfully!');
           this.songForm.reset();
           this.formModified.emit();
-          this.router.navigate(['/home']);
+          // this.router.navigate(['/home']);
         },
         complete: () => {
           this.spinner.hide();
@@ -73,7 +77,7 @@ export class FormComponent {
       this.spinner.show();
     this.subscriptions$.add(
       this.songService
-      .putSong({
+      .putSong(this.song.id, {
           ...this.editSong,
           id: 1,
           title: this.songForm.get('title')?.value,
@@ -99,6 +103,7 @@ export class FormComponent {
     } else {
       this.createSong();
     }
+    this.songForm.reset()
   }
 
   isFormTouched() {
@@ -110,7 +115,4 @@ export class FormComponent {
     return false;
   }
 
-  cancel() {
-    this.router.navigate(['/home']);
-  }
 }

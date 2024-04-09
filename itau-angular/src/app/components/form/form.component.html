@@ -16,5 +16,4 @@
     <small *ngIf="songForm.get('image')?.invalid && songForm.get('image')?.touched" id="emailHelp" class="form-text text-muted">This field is required</small>
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!songForm.valid || !isFormTouched()">Submit</button>
-  <button type="text" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

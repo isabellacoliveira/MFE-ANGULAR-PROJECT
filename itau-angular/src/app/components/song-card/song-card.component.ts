@@ -21,11 +21,13 @@ import { ToastrService } from 'ngx-toastr';
 export class SongCardComponent {
   @Input() song: IMusic;
   @Output() songDeleted = new EventEmitter();
+  @Output() songToEdit = new EventEmitter();
   @ViewChild(ModalComponent)
   modal: ModalComponent;
   @ViewChild(FormComponent)
   form: FormComponent;
   subscriptions$ = new Subscription();
+  @Output() isNotFavorite: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private songService: SongServiceService,
@@ -45,6 +47,7 @@ export class SongCardComponent {
         .subscribe({
           complete: () => {
             this.spinner.hide();
+            this.isNotFavorite.emit();
           },
           error: (error) => {
             this.toastr.error('Error', 'An error has ocurred' + error);
@@ -63,7 +66,9 @@ export class SongCardComponent {
   }
 
   editSong() {
-    this.modal.open();
-    this.form.setForm(this.song);
+    this.songToEdit.emit(this.song);
+    console.log(this.song)
   }
+  
+  
 }

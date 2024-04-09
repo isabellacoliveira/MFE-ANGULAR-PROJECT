@@ -1,27 +1,58 @@
-# ItauAngular
+# My Music Collection
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+Welcome to My Music Collection! This web application allows users to manage and organize their favorite music collection effortlessly. Whether you want to add new songs, edit existing ones, or remove them, this application has got you covered. Additionally, it offers a unique feature to track changes in the database and extract modified data to a file for further analysis.
 
-## Development server
+![Angular Logo](angular_logo.png) ![Spring Boot Logo](spring_boot_logo.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Diagrams](#diagrams)
+  - [Solution Design](#solution-design)
+  - [Sequence Diagram](#sequence-diagram)
 
-## Code scaffolding
+## Features
+- **CRUD Operations:** Users can perform Create, Read, Update, and Delete operations on their music collection.
+- **Change Tracking:** Automatically detects changes in the database and extracts modified data to a file.
+- **User-Friendly Interface:** Intuitive and easy-to-use interface for seamless navigation and interaction.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
+- Angular 12+
+- Java 11+
+- AWS (Amazon Web Services)
+- Relational or Non-relational Database (e.g., PostgreSQL, MongoDB)
+- ![Itaú Logo](itaubank_logo.png)
 
-## Build
+## Getting Started
+To get started with the application, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository: `git clone https://github.com/your-repository-url.git`
+2. Navigate to the frontend directory: `cd frontend`
+3. Install dependencies: `npm install`
+4. Run the application: `ng serve`
 
-## Running unit tests
+## Usage
+Once the application is up and running, you can access it through your web browser. Here are some steps to utilize its functionalities:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Login/Register:** If it's your first time, register as a new user. Otherwise, log in with your credentials.
+2. **Add New Song:** Click on the "Add Song" button to insert a new song into your collection.
+3. **Edit Song:** Select a song from your collection and click on the "Edit" button to modify its details.
+4. **Delete Song:** Remove any unwanted songs from your collection by clicking on the "Delete" button.
+5. **Track Changes:** The application automatically monitors database changes. You can view the extracted data in the designated file for analysis.
 
-## Running end-to-end tests
+## Diagrams
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Solution Design
+![Solution Design](solution_design.png)
 
-## Further help
+### Sequence Diagram 
+![Sequence Diagram](sequence_diagram.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For more details, refer to the respective diagram images provided in the repository.
+
+Enjoy managing your music collection hassle-free with My Music Collection! If you have any questions or feedback, feel free to reach out.
+
+---
+*This application was developed as part of a challenge.*
