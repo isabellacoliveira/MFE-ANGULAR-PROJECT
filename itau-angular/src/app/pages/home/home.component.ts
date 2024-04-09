@@ -4,8 +4,8 @@ import { IMusic } from './../../interfaces/Music/IMusic';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
 import { FormComponent } from 'src/app/components/form/form.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -40,17 +40,18 @@ export class HomeComponent implements OnInit {
 
   openModal() {
     this.modal.open();
+    this.editSongData = {} as IMusic;
   }
 
   closeModal() {
-    this.modal.close();
     this.getMusics();
+    this.modal.close();
     this.editSongData = {} as IMusic;
   }
 
   editSong(song: IMusic) {
     this.editSongData = song;
-    this.form.setForm(this.editSongData)
+    this.form.setForm(this.editSongData);
     this.modal.open();
   }
 
@@ -64,30 +65,18 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnDestroy() {
-    this.subscriptions$.unsubscribe();
+  deleteMusic(song: IMusic) {
+    this.subscriptions$.add(
+      this.songService.deleteSong({ id: song.id }).subscribe({
+        complete: () => {
+          this.toastr.success('Successfully', 'The Song was edited successfully!');
+          this.getMusics();
+        },
+      })
+    );
   }
 
-  onSongDeleted(song: IMusic) {
-    this.modal.open();
-
-    this.songService.deleteSong({ id: song.id }).subscribe(
-      () => {
-        this.spinner.show();
-        this.songs = this.songs.filter((item) => item.id !== song.id);
-
-        setTimeout(() => {
-          this.spinner.hide();
-        }, 3000);
-
-        this.toastr.success(
-          'Successfully',
-          'The Song was deleted successfully!'
-        );
-      },
-      (error) => {
-        this.toastr.error('Error', 'An error has ocurred' + error);
-      }
-    );
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }

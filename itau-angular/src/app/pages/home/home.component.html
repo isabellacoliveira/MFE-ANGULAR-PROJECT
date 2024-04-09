@@ -10,7 +10,7 @@
 
   <div class="content-songs" *ngIf="songs.length > 0, else noSongs">
     <div class="row" *ngFor="let song of songs">
-        <app-song-card [song]="song" (songDeleted)="onSongDeleted(song)" (songToEdit)="editSong($event)"></app-song-card>
+        <app-song-card [song]="song" (songToDelete)="deleteMusic(song)" (songToEdit)="editSong($event)" ></app-song-card>
     </div>
   </div>
 
@@ -24,10 +24,4 @@
   <app-modal #myModal (closeModal)="closeModal()">
     <app-form [editSong]="editSongData" (formModified)="closeModal()"></app-form>
   </app-modal>
-
-
-
-
-
-
 

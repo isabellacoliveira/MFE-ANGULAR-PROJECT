@@ -29,7 +29,7 @@ export class SongServiceService {
 
   putSong(id: number, body: IPutSongBody) {
     return this.httpClient.put<IApiResponse<IPutSongResponseData>>(
-      this.baseUrl,
+      `${this.baseUrl}/${id}`,
       body
     );
   }

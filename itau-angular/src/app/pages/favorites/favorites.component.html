@@ -6,7 +6,7 @@
 
 <div class="content-songs" *ngIf="songs.length > 0, else noSongs">
   <div class="row" *ngFor="let song of songs">
-      <app-song-card [song]="song" (isNotFavorite)="getMusics()"></app-song-card>
+      <app-song-card [song]="song" (isNotFavorite)="getMusics()" ></app-song-card>
   </div>
 </div>
 

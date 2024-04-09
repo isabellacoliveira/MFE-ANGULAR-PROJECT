@@ -1,7 +1,7 @@
 import { SongServiceService } from './../../services/song-service.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -30,6 +30,7 @@ export class FormComponent {
 
   setForm(song: IMusic) {
     this.songForm.setValue({
+      id: song.id,
       title: song.title,
       artist: song.artist,
       image: song.image,
@@ -41,6 +42,7 @@ export class FormComponent {
 
   ngOnInit(): void {
     this.songForm = this.fb.group({
+      id: [''],
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       artist: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       image: ['', [Validators.required]],
@@ -60,7 +62,6 @@ export class FormComponent {
           this.toastr.success('Successfully', 'The Song was created successfully!');
           this.songForm.reset();
           this.formModified.emit();
-          // this.router.navigate(['/home']);
         },
         complete: () => {
           this.spinner.hide();
@@ -75,27 +76,29 @@ export class FormComponent {
 
     editSongs() {
       this.spinner.show();
-    this.subscriptions$.add(
-      this.songService
-      .putSong(this.song.id, {
-          ...this.editSong,
-          id: 1,
-          title: this.songForm.get('title')?.value,
-          artist: this.songForm.get('artist')?.value,
-          image: this.songForm.get('image')?.value,
-        })
-        .subscribe({
-          complete: () => {
-            this.toastr.success('Successfully', 'The Song was created successfully!');
-            this.spinner.hide();
-          },
-          error: (error) => {
-            this.toastr.error('Error', 'An error has ocurred' + error);
-            this.spinner.hide();
-          },
-        })
-    );
-  }
+      this.subscriptions$.add(
+        this.songService
+        .putSong(this.editSong.id, {
+            id: this.editSong.id,
+            title: this.songForm.get('title')?.value,
+            artist: this.songForm.get('artist')?.value,
+            image: this.songForm.get('image')?.value,
+            isSaved: this.editSong.isSaved
+          })
+          .subscribe({
+            complete: () => {
+              this.toastr.success('Successfully', 'The Song was edited successfully!');
+              this.spinner.hide();
+              this.formModified.emit();
+            },
+            error: (error) => {
+              this.toastr.error('Error', 'An error has ocurred' + error);
+              this.spinner.hide();
+            },
+          })
+      );
+    }
+    
 
   submitForm() {
     if (this.isEditMode) {
@@ -114,5 +117,6 @@ export class FormComponent {
     }
     return false;
   }
+
 
 }

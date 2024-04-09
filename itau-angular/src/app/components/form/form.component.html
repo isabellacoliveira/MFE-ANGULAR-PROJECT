@@ -1,19 +1,28 @@
-
 <form [formGroup]="songForm" (submit)="submitForm()">
-  <div class="form-group"  >
-    <label for="exampleInputEmail1">Song Title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="title" formControlName="title" placeholder="Type Here">
-    <small *ngIf="songForm.get('title')?.invalid && songForm.get('title')?.touched" id="emailHelp" class="form-text text-muted">This field is required</small>
+  <div class="form-group">
+    <label for="title">Song Title</label>
+    <input type="text" class="form-control" id="title" name="title" formControlName="title" placeholder="Type Here">
+    <small *ngIf="songForm.get('title')?.invalid && songForm.get('title')?.touched" id="titleHelp" class="form-text text-muted">
+      <span *ngIf="songForm.get('title')?.errors?.['required']">This field is required</span>
+      <span *ngIf="songForm.get('title')?.errors?.['minlength']">Minimum length is 2 characters</span>
+      <span *ngIf="songForm.get('title')?.errors?.['maxlength']">Maximum length is 50 characters</span>
+    </small>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Artist Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="artist" formControlName="artist" placeholder="Type Here">
-    <small *ngIf="songForm.get('artist')?.invalid && songForm.get('artist')?.touched" id="emailHelp" class="form-text text-muted">This field is required</small>
+    <label for="artist">Artist Name</label>
+    <input type="text" class="form-control" id="artist" name="artist" formControlName="artist" placeholder="Type Here">
+    <small *ngIf="songForm.get('artist')?.invalid && songForm.get('artist')?.touched" id="artistHelp" class="form-text text-muted">
+      <span *ngIf="songForm.get('artist')?.errors?.['required']">This field is required</span>
+      <span *ngIf="songForm.get('artist')?.errors?.['minlength']">Minimum length is 2 characters</span>
+      <span *ngIf="songForm.get('artist')?.errors?.['maxlength']">Maximum length is 50 characters</span>
+    </small>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Artist Image</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="image" formControlName="image" placeholder="Insert Here">
-    <small *ngIf="songForm.get('image')?.invalid && songForm.get('image')?.touched" id="emailHelp" class="form-text text-muted">This field is required</small>
+    <label for="image">Artist Image</label>
+    <input type="text" class="form-control" id="image" name="image" formControlName="image" placeholder="Insert Here">
+    <small *ngIf="songForm.get('image')?.invalid && songForm.get('image')?.touched" id="imageHelp" class="form-text text-muted">
+      <span *ngIf="songForm.get('image')?.errors?.['required']">This field is required</span>
+    </small>
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!songForm.valid || !isFormTouched()">Submit</button>
 </form>
