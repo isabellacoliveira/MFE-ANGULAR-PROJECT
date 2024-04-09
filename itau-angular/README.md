@@ -19,10 +19,11 @@ Welcome to My Music Collection! This web application allows users to manage and 
 - **User-Friendly Interface:** Intuitive and easy-to-use interface for seamless navigation and interaction.
 
 ## Technologies Used
-- Angular 12+
-- Java 11+
+- Angular 17+
+- Java 22+
+- Maven 3.9.6
 - AWS (Amazon Web Services)
-- Relational or Non-relational Database (e.g., PostgreSQL, MongoDB)
+- Relational Database (MySQL)
 - ![Itaú Logo](./src/assets/itau.png)
 
 ## Getting Started
