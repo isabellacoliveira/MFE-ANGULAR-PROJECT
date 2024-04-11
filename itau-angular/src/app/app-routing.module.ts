@@ -17,10 +17,6 @@ const routes: Routes = [
       component: HomeComponent,
     },
     {
-      path: 'form',
-      component: FormComponent,
-    },
-    {
       path: 'favorites',
       component: FavoritesComponent,
     },

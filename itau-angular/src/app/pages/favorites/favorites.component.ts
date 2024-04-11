@@ -37,18 +37,22 @@ export class FavoritesComponent {
   generatePDF() {
     const doc = new jsPDF();
     let yOffset = 10;
-  
+
     doc.text('Your Favorite Songs List:', 10, yOffset);
-  
+
     this.songs.forEach((song) => {
       yOffset += 10;
       doc.text(`${song.title} - ${song.artist}`, 10, yOffset);
     });
-  
+
     doc.save('Favorites.pdf');
   }
 
   getDownloadRelatorio() {
     this.generatePDF();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }

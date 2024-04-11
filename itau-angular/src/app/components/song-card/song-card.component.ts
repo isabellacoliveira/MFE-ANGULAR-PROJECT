@@ -65,8 +65,12 @@ export class SongCardComponent {
   editSong() {
     this.songToEdit.emit(this.song);
   }
-  
+
   deleteSong() {
     this.songToDelete.emit(this.song);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
   }
 }

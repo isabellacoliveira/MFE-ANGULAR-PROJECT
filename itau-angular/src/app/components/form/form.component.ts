@@ -98,7 +98,7 @@ export class FormComponent {
           })
       );
     }
-    
+
 
   submitForm() {
     if (this.isEditMode) {
@@ -118,5 +118,8 @@ export class FormComponent {
     return false;
   }
 
+  ngOnDestroy() {
+    this.subscriptions$.unsubscribe();
+  }
 
 }
